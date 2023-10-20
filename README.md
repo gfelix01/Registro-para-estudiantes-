@@ -37,7 +37,7 @@ Si deseas contribuir a este proyecto o informar sobre problemas, siéntete libre
 
 ## Autor
 
-[Tu Nombre]
+Gabriel Arturo Felix Paez
 
 ## Licencia
 
