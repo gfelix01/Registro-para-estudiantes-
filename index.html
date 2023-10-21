@@ -10,7 +10,7 @@
 
 <body>
     <h2>Registro de Estudiantes</h2>
-    <form id="studentForm" onsubmit="return validarFormulario()">
+    <form id="studentForm" class="studentForm" return validarFormulario()">
         <div class="inputGroup">
             <input type="text" id="nombre" required>
             <label for="nombre">Nombre</label>
@@ -27,7 +27,7 @@
             <input type="number" id="calificacion" min="60" max="100" required>
             <label for="calificacion">Calificación</label>
         </div>
-        <button type="button" onclick="agregarEstudiante()">Agregar Estudiante</button>
+        <button type="button" class="form button" onclick="agregarEstudiante()">Agregar Estudiante</button>
     </form>
     <table id="studentTable">
         <tr>
