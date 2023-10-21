@@ -1,7 +1,8 @@
 /* Estilos generales */
 body {
     font-family: Arial, sans-serif;
-    background-color: #3d47695e;
+    text-wrap: nowrap;
+    background-color: #bdd3e3;
     margin: 0;
     padding: 0;
 }
@@ -24,12 +25,13 @@ form {
 }
 
 .studentForm {
-    background: #bdc3c7;
+    background: #373B44;
     /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);
+    background: -webkit-linear-gradient(to right, #4286f4, #373B44);
     /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #2c3e50, #bdc3c7);
+    background: linear-gradient(to right, #4286f4, #373B44);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 
 }
 
@@ -76,17 +78,7 @@ form {
 }
 
 /* Estilos para el botón del formulario */
-/*form button {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
-}
-*/
+
 button {
     border: none;
     display: block;
@@ -97,7 +89,7 @@ button {
     cursor: pointer;
     user-select: none;
     overflow: hidden;
-    color: royalblue;
+    color: rgba(9, 10, 11, 0.493);
     z-index: 1;
     font-family: inherit;
     font-weight: 500;
@@ -111,7 +103,7 @@ button span {
     height: 100%;
     background: transparent;
     z-index: -1;
-    border: 4px solid royalblue;
+    border: 4px solid rgb(117, 139, 199);
 }
 
 button span::before {
