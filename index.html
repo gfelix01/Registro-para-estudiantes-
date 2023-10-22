@@ -10,14 +10,16 @@
 
 <body>
     <h2>Registro de Estudiantes</h2>
-    <form id="studentForm" class="studentForm" return validarFormulario()">
+
+    <!-- Formulario para registrar estudiantes -->
+    <form id="studentForm" class="studentForm" onsubmit="return validarFormulario()">
         <div class="inputGroup">
             <input type="text" id="nombre" required>
             <label for="nombre">Nombre</label>
         </div>
         <div class="inputGroup">
             <input type="text" id="apellido" required>
-            <label for "apellido">Apellido</label> <!-- Corregido aquí -->
+            <label for="apellido">Apellido</label>
         </div>
         <div class="inputGroup">
             <input type="text" id="matricula" required>
@@ -27,10 +29,14 @@
             <input type="number" id="calificacion" min="60" max="100" required>
             <label for="calificacion">Calificación</label>
         </div>
-        <button type="button" onclick="agregarEstudiante()"> Agregar
+
+
+        <button type="button" onclick="agregarEstudiante()">Agregar
             <span></span>
         </button>
     </form>
+
+    <!-- Tabla para mostrar la lista de estudiantes -->
     <table id="studentTable">
         <tr>
             <th>Nombre</th>
@@ -40,7 +46,10 @@
             <th>Acciones</th>
         </tr>
     </table>
+
+
     <p id="promedioTotal"><strong>Promedio Total: 0.00</strong></p>
+
     <script src="main.js"></script>
 </body>
 
