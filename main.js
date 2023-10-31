@@ -1,5 +1,4 @@
-let totalCalificaciones = 0;
-let totalEstudiantes = 0;
+let estudiantes = [];
 
 function agregarEstudiante() {
     const nombre = document.getElementById('nombre').value;
@@ -12,6 +11,15 @@ function agregarEstudiante() {
         return;
     }
 
+    const estudiante = {
+        nombre: nombre,
+        apellido: apellido,
+        matricula: matricula,
+        calificacion: calificacion
+    };
+
+    estudiantes.push(estudiante);
+
     const table = document.getElementById('studentTable');
     const row = table.insertRow(-1);
     const cell1 = row.insertCell(0);
@@ -23,40 +31,43 @@ function agregarEstudiante() {
     cell2.innerHTML = apellido;
     cell3.innerHTML = matricula;
     cell4.innerHTML = calificacion;
-    cell5.innerHTML = '<button onclick="eliminarEstudiante(this)">Eliminar</button>';
+    cell5.innerHTML = `<button onclick="eliminarEstudiante(${estudiantes.length - 1})">Eliminar</button> <button onclick="modificarEstudiante(${estudiantes.length - 1})">Modificar</button>`;
 
-    // Actualizar el promedio total
-    totalCalificaciones += calificacion;
-    totalEstudiantes++;
+    actualizarPromedioTotal();
+    limpiarFormulario();
+}
 
-    // Calcular el promedio y mostrarlo
+function eliminarEstudiante(index) {
+    estudiantes.splice(index, 1);
+
+    const table = document.getElementById('studentTable');
+    table.deleteRow(index + 1);
+
+    actualizarPromedioTotal();
+}
+
+function modificarEstudiante(index) {
+    const estudiante = estudiantes[index];
+
+    document.getElementById('nombre').value = estudiante.nombre;
+    document.getElementById('apellido').value = estudiante.apellido;
+    document.getElementById('matricula').value = estudiante.matricula;
+    document.getElementById('calificacion').value = estudiante.calificacion;
+
+    eliminarEstudiante(index);
+}
+
+function actualizarPromedioTotal() {
+    const totalCalificaciones = estudiantes.reduce((total, estudiante) => total + estudiante.calificacion, 0);
+    const totalEstudiantes = estudiantes.length;
+
     const promedioTotal = totalCalificaciones / totalEstudiantes;
     document.getElementById('promedioTotal').innerText = `Promedio Total: ${promedioTotal.toFixed(2)}`;
+}
 
-    // Limpiar el formulario después de agregar un estudiante
+function limpiarFormulario() {
     document.getElementById('nombre').value = '';
     document.getElementById('apellido').value = '';
     document.getElementById('matricula').value = '';
     document.getElementById('calificacion').value = '';
-}
-
-function eliminarEstudiante(button) {
-    const row = button.parentNode.parentNode;
-    const calificacion = parseFloat(row.cells[3].textContent);
-
-    // Actualizar el promedio total al eliminar un estudiante
-    totalCalificaciones -= calificacion;
-    totalEstudiantes--;
-
-    const table = document.getElementById('studentTable');
-    table.deleteRow(row.rowIndex);
-
-    // Calcular el nuevo promedio y mostrarlo
-    if (totalEstudiantes > 0) {
-        const promedioTotal = totalCalificaciones / totalEstudiantes;
-        document.getElementById('promedioTotal').innerText = `Promedio Total: ${promedioTotal.toFixed(2)}`;
-    } else {
-        // Si no hay estudiantes, el promedio total es 0
-        document.getElementById('promedioTotal').innerText = 'Promedio Total: 0.00';
-    }
 }
